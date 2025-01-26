@@ -1,5 +1,23 @@
-//Why we are using PQ(min heap) - bcz we want shortest distance to always be at top
+//Why we are using PQ(min heap) ->  bcz we want shortest distance to always be at top.
 
+//Why Pq instead of queue -> We use a Priority Queue (PQ) instead of a regular Queue in Dijkstra's algorithm because the algorithm relies on always processing 
+//                           the node with the smallest distance first. This behavior cannot be achieved with a regular queue.
+
+//TC- O(E log V) -> Each insertion and deletion operation in the priority queue takes O(log V) 
+//                  Each edge contributes O(log V) for the priority queue operations.
+//                  There are E edges in the graph.
+//                  Hence, the total complexity due to edge relaxation is O(E log V).
+
+
+
+class iPair {
+    int first, second;
+
+    iPair(int first, int second) {
+        this.first = first;
+        this.second = second;
+    }
+}
 class Solution {
    
     // Function to implement Dijkstra's algorithm
