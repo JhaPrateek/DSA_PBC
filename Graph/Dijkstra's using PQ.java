@@ -1,3 +1,4 @@
+//Why we are using PQ(min heap) - bcz we want shortest distance to always be at top
 
 class Solution {
    
