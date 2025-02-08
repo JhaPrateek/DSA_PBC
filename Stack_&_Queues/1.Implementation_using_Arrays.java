@@ -1,7 +1,36 @@
-## Stack implementation
+// Stack implementation
 
+class Stack {
+    int size = 10000;  // Maximum size of the stack
+    int arr[] = new int[size]; // Array to store stack elements
+    int top = -1; // Index representing the top of the stack, initially -1 (empty)
 
-## Queue implementation
+    // Push operation: Adds an element to the top of the stack
+    void push(int x) {
+        top++; // Move top pointer to the next position
+        arr[top] = x; // Store the new element at the top position
+    }
+
+    // Pop operation: Removes and returns the top element from the stack
+    int pop() {
+        int x = arr[top]; // Get the top element
+        top--; // Move top pointer down to remove the element
+        return x; // Return the popped element
+    }
+
+    // Top operation: Returns the top element without removing it
+    int top() {
+        return arr[top]; // Return the element at the top
+    }
+
+    // Size operation: Returns the current number of elements in the stack
+    int size() {
+        return top + 1; // Stack size is top index + 1 (since index starts from 0)
+    }
+}
+
+    
+// Queue implementation
 
 class Queue {
 
