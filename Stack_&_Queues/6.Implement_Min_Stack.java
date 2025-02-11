@@ -15,6 +15,7 @@ Input
 Output
 [null,null,null,null,-3,null,0,-2]
 
+```java
 class MinStack {
 
     // Internal class to store each value along with the minimum at that point
@@ -67,4 +68,4 @@ class MinStack {
         return st.peek().min;
     }
 }
-
+```
