@@ -1,6 +1,4 @@
-import java.util.LinkedList;
-import java.util.Queue;
-
+```java
 class Stack {
     Queue<Integer> q = new LinkedList<>(); // Using a single queue to implement stack
 
@@ -47,3 +45,4 @@ class Stack {
         System.out.println("Stack size: " + stack.size()); // Should print 2
     }
 }
+```
