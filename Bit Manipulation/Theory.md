@@ -42,9 +42,9 @@ Find the one's complement:
 Add 1 to the one's complement:
   1111 0011
 
-## Bitwise Operators
+# Bitwise Operators
 
-# AND Operator
+## AND Operator
 The AND operator is denoted by & and performs a bitwise AND operation. If both corresponding bits are 1, the resulting bit is 1; otherwise, the resulting bit is 0.
 Example: 13 & 7 is:
    13: 1101
@@ -52,7 +52,7 @@ Example: 13 & 7 is:
   & -------
    5: 0101
 
-# OR Operator
+## OR Operator
 The OR operator is denoted by | and performs a bitwise OR operation. If either corresponding bit is 1, the resulting bit is 1; otherwise, the resulting bit is 0.
 Example: 13 | 7 is:
    13: 1101
@@ -60,7 +60,7 @@ Example: 13 | 7 is:
    | --------
    15: 1111
 
-# XOR Operator
+## XOR Operator
 The XOR operator is denoted by ^ and performs a bitwise XOR operation. If the number of 1s in corresponding bit positions is odd, the resulting bit is 1; if even, the resulting bit is 0.
 Example: 13 ^ 7 is:
    13: 1101
@@ -68,13 +68,13 @@ Example: 13 ^ 7 is:
    ^ --------
    10: 1010
 
-# NOT Operator
+## NOT Operator
 The NOT operator is denoted by ~ and flips all the bits in the number.
 Example: ~5 is:
    5: 0000 0101
    ~5: 1111 1010 (which is -6 in two's complement)
 
-# Shift Operators
+## Shift Operators
 Right Shift (>>): Shifts the bits to the right, discarding the bits that fall off and filling the leftmost bits with zeros.
 Example:    13 >> 1 = 1101 >> 1 = 0110 (binary of 6)
 Left Shift (<<): Shifts the bits to the left, discarding the bits that fall off and filling the rightmost bits with zeros.
