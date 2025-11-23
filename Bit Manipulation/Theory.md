@@ -47,10 +47,12 @@ Add 1 to the one's complement:
 ## AND Operator
 The AND operator is denoted by & and performs a bitwise AND operation. If both corresponding bits are 1, the resulting bit is 1; otherwise, the resulting bit is 0.
 Example: 13 & 7 is:
+```
    13: 1101
    7: 0111
   & -------
    5: 0101
+```
 
 ## OR Operator
 The OR operator is denoted by | and performs a bitwise OR operation. If either corresponding bit is 1, the resulting bit is 1; otherwise, the resulting bit is 0.
