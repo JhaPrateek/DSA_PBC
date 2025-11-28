@@ -87,8 +87,88 @@ class Solution {
 }
 Time Complexity:O(2N), where N is the size of the array. The outer and the inner loop is running for N times each.
 Space Complexity: O(1) as no extra space is being used.
+
+Approach: 
+First, initialize few variables as : l and r as pointers to the left and right ends of the window respectively, both starting at the beginning of the array nums, zeros to keep track of the number of zeros encountered within the current window, maxLen to store the maximum length of the substring found so far.
+
+Use a sliding window approach where r moves from the start to the end of the array nums. Check if current element in the array is 0. If yes, increment the zeros count.
+
+While zeros exceeds k, adjust the window by moving l to the right until zeros is less than or equal to k. This ensures that the window contains at most k zeros.
+
+If number of zero is less than or equal to k then calculate the length of the substring. Update maximum length of sustring to keep track of the maximum length encountered during the iteration and finally, return it.
 ```
 
 ```java
+import java.util.*;
 
+class Solution {
+    /* Function to find the length of the
+    longest substring with at most k zeros */
+    public int longestOnes(int[] nums, int k) {
+        
+        // Length of the input array
+        int n = nums.length;
+        
+        // Pointers for sliding window approach
+        int l = 0, r = 0;
+        
+        /* Variables to count zeros
+        and store maximum length */
+        int zeros = 0, maxLen = 0;
+               
+        /* Iterate through the array 
+        using sliding window approach */
+        while (r < n) {
+            
+            if(nums[r] == 0) zeros++;
+            
+            if (zeros > k) {
+                if (nums[l] == 0) {
+                    
+                    /* Decrement zeros count
+                    when moving left pointer */
+                    zeros--; 
+                }
+                l++;
+            }
+            if(zeros <= k){
+                /* Calculate the length 
+                of current substring */
+                int len = r - l + 1;
+            
+                /* Update maxLen if the current
+                substring length is greater */
+                maxLen = Math.max(maxLen, len);
+            }
+            r++;  
+        }
+        
+        // Return the maximum length
+        return maxLen; 
+    }
+    
+    public static void main(String[] args) {
+        int[] input = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
+        int k = 2;  
+        
+        // Create an instance of Solution class
+        Solution sol = new Solution();
+        
+        int length = sol.longestOnes(input, k);
+        
+        // Print the result
+        System.out.println("Length of longest substring with at most " + k + " zeros: " + length);
+    }
+}
+Time Complexity:O(N), where N is the size of the array. As for every element , the loop run N times.
+Space Complexity: O(1) as no extra space is being used.
+
+Approach: 
+First, initialize few variables as: l and r as pointers, where l marks the left boundary and r marks the right boundary of the sliding window, zeros to count the number of zeros encountered within the current window, maxLen to store the maximum length of valid substrings found.
+
+Use the r pointer to traverse through the array. For each element, check if it is 0. If so, increment the zeros count because we are adding one more zero to the current window.
+
+After incrementing zeros, check if zeros exceeds the allowed limit k. If so, adjust the window by moving the l pointer to the right until the window contains at most k zeros (zeros <= k). Decrement the zeros count accordingly when the element pointed by l is 0 and increment l.
+
+Whenever zeros is less than or equal to k, calculate the length of the current substring. Update maxLen to store the maximum length encountered so far among all valid substrings. Move r pointer by 1. Finally, return maxLen variable.
 ```
