@@ -11,44 +11,24 @@ Space Complexity: O(N)
 
 ```java
 class Solution {
-    // Function to find the next greater element for each element of the array.
-    public ArrayList<Integer> nextLargerElement(int[] arr) {
+    public int[] nextLargerElement(int[] arr) {
         int n = arr.length;
-        ArrayList<Integer> al = new ArrayList<>();
-        Stack<Integer> st = new Stack<>(); // Stack to keep track of next greater elements.
+        Stack<Integer> st = new Stack<>();
+        int ans[] = new int[n];
 
-        // Traverse the array from right to left.
-        for (int i = n - 1; i >= 0; i--) {
-            // If stack is empty, there is no greater element, so add -1.
-            if (st.isEmpty()) {
-                al.add(-1);
+        ans[n - 1] = -1;       // Last element → always -1
+        st.push(arr[n - 1]);  // Push last element to stack
+
+        for (int i = n - 2; i >= 0; i--) {
+            while (!st.isEmpty() && st.peek() <= arr[i]) {
+                st.pop(); // Remove smaller elements
             }
-            // If top of stack is greater than current element, it is the next greater element.
-            else if (arr[i] < st.peek()) {
-                al.add(st.peek());
-            }
-            // If top of stack is smaller or equal, pop elements until a greater one is found.
-            else {
-                while (!st.isEmpty() && st.peek() <= arr[i]) {
-                    st.pop();
-                }
-                // If stack is not empty, top of stack is the next greater element.
-                if (!st.isEmpty()) {
-                    al.add(st.peek());
-                } 
-                // If stack is empty, no greater element exists, so add -1.
-                else {
-                    al.add(-1);
-                }
-            }
-            // Push the current element to stack for future comparisons.
-            st.push(arr[i]);
+            ans[i] = st.isEmpty() ? -1 : st.peek(); // Next greater
+            st.push(arr[i]); // Push current element for future elements
         }
-
-        // Reverse the list to maintain original order.
-        Collections.reverse(al);
-        return al;
+        return ans;
     }
 }
-
+Time Complexity:O(n), where n is the length of the input array, due to the single for loop and amortized constant time stack operations.
+Space Complexity:O(n), where n is the length of the input array, due to the stack and the answer array.
 ```
