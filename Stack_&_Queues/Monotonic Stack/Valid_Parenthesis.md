@@ -20,41 +20,28 @@ Approach - 1
 
 ```java
 class Solution {
-    public boolean isValid(String s) {
-        Stack<Character> st = new Stack<>(); // Stack to store opening brackets
-        int n = s.length();
-        
-        // If the string is empty or has an odd length, it's invalid
-        if (n == 0 || n % 2 != 0) {
-            return false;
-        }
-        
-        // Iterate through each character in the string
-        for (char c : s.toCharArray()) {
-            // If the character is an opening bracket, push it onto the stack
-            if (c == '{' || c == '(' || c == '[') {
-                st.push(c);
-            } else { // If it's a closing bracket
-                // If stack is empty and we get a closing bracket, it's invalid
-                if (st.isEmpty()) {
+    public boolean isValid(String str) {
+        Stack<Character> st = new Stack<>();
+
+        for (char ch : str.toCharArray()) {
+            // If opening bracket, push to stack
+            if (ch == '(' || ch == '{' || ch == '[') {
+                st.push(ch);
+            } 
+            // If closing bracket, check matching
+            else {
+                if (st.isEmpty()) return false; // No matching opening bracket
+
+                char top = st.pop();
+                if ((ch == ')' && top != '(') ||
+                    (ch == '}' && top != '{') ||
+                    (ch == ']' && top != '[')) {
                     return false;
-                }
-                
-                // Check if the top of the stack has the matching opening bracket
-                if (c == '}' && st.peek() == '{') {
-                    st.pop(); // Valid pair found, remove opening bracket
-                } else if (c == ']' && st.peek() == '[') {
-                    st.pop(); // Valid pair found, remove opening bracket
-                } else if (c == ')' && st.peek() == '(') {
-                    st.pop(); // Valid pair found, remove opening bracket
-                } else {
-                    return false; // Mismatched brackets
                 }
             }
         }
-        
-        // If the stack is empty at the end, all brackets were matched
-        return st.isEmpty();
+
+        return st.isEmpty();  // All brackets matched
     }
 }
 
