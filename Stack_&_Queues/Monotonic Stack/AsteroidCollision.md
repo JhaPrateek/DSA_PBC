@@ -5,7 +5,6 @@
 The absolute value of an asteroid represents its size. The sign of an asteroid represents its direction: positive (+) means moving right, negative (-) means moving left.
 
 
-
 Collision rules:
 
 Asteroids moving in the same direction never collide.
