@@ -40,3 +40,68 @@ class Solution {
 Time Complexity:O(n*k), due to nested loops iterating through the array.
 Space Complexity:O(n-k+1), primarily due to the size of the `ans` array.
 ```
+
+```java
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        
+        int n = nums.length;
+        
+        // Deque to store indices of useful elements
+        Deque<Integer> deq = new ArrayDeque<>();
+        
+        // Result array to store max of each window
+        int[] result = new int[n - k + 1];
+        int ri = 0; // result index
+        
+        for (int i = 0; i < n; i++) {
+            
+            // ---------------- STEP 1 ----------------
+            // Remove elements that are OUTSIDE the current window
+            // Window range = [i - k + 1, i]
+            while (!deq.isEmpty() && deq.peekFirst() <= i - k) {
+                deq.pollFirst();
+            }
+            
+            // ---------------- STEP 2 ----------------
+            // Remove all smaller elements from the back
+            // because they cannot be maximum anymore
+            while (!deq.isEmpty() && nums[i] > nums[deq.peekLast()]) {
+                deq.pollLast();
+            }
+            
+            // ---------------- STEP 3 ----------------
+            // Add current index to the deque
+            deq.offerLast(i);
+            
+            // ---------------- STEP 4 ----------------
+            // Start adding maximums to result once first window is complete
+            if (i >= k - 1) {
+                result[ri++] = nums[deq.peekFirst()];
+            }
+        }
+        
+        return result;
+    }
+}
+Time Complexity:O(n), where n is the length of the input array, because each element is visited and processed at most twice (once for adding and once for removing) in the deque.
+Space Complexity:O(k), where k is the window size, because the deque stores at most k elements.
+```
+
+### Intution of 2nd approach
+
+- We use a deque to store indices of elements in decreasing order of their values.
+
+- Before adding a new element, we remove indices from the front that are outside the current window.
+
+- Then we remove indices from the back whose values are smaller than the current element, as they’ll never be useful again.
+
+- This keeps the deque clean and ordered with only potential maximum candidates.
+
+- We always insert the current index at the back.
+
+- Once the first window is formed (i ≥ k−1), the front of deque gives the maximum.
+
+- Each element is added and removed at most once, making the algorithm efficient.
+
+- Therefore, the total time complexity is O(n) with space O(k).
