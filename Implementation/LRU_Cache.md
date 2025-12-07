@@ -9,6 +9,7 @@ void put(int key,int value): Update the value of the key if the key exists. Othe
 The functions get and put must each run in O(1) average time complexity.
 
 Examples:
+```
 Input:
 
  ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
@@ -40,7 +41,8 @@ lRUCache.get(1);  // return -1 (not found)
 lRUCache.get(3);  // return 3
 
 lRUCache.get(4);  // return 4
-
+```
+```
 Input:
 
 ["LRUCache", "put", "put", "get", "put", "get", "put", "get"]
@@ -68,7 +70,7 @@ lRUCache.get(2);  // returns -1 (not found)
 lRUCache.put(4, 4); // evicts key 3, cache is {4=4}
 
 lRUCache.get(3);  // returns -1 (not found)
-
+```
 ```java
 class LRUCache {
     
