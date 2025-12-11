@@ -1,4 +1,4 @@
-### iven an array of non-negative integers, height representing the elevation of ground. Calculate the amount of water that can be trapped after rain.
+### Given an array of non-negative integers, height representing the elevation of ground. Calculate the amount of water that can be trapped after rain.
 
 
 Examples:
