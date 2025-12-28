@@ -1,4 +1,4 @@
-### 
+### Given the head of a singly linked list. Return true if a loop exists in the linked list or return false. A loop exists in a linked list if some node in the list can be reached again by continuously following the next pointer. Internally, pos is used to denote the index(0-based) of the node from where the loop starts. Note that pos is not passed as a parameter.
 
 ```java
 Optimised
