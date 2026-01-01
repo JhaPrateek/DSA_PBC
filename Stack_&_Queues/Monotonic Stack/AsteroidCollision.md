@@ -96,4 +96,16 @@ class Solution {
 
 Time Complexity:O(n) in the worst case, where n is the number of asteroids because each asteroid is pushed and popped from the stack at most once.
 Space Complexity:O(n) in the worst case, where n is the number of asteroids because the stack can contain all the asteroids.
+
+Intuition of Asteroid Collision (10 lines, crisp)
+Only head-on collisions matter: + then -.
+Use a stack to remember active right-moving asteroids.
+Traverse asteroids one by one.
+If current moves right → push directly.
+If current moves left → it may collide with stack top.
+Compare sizes during collision.
+Smaller asteroid gets destroyed.
+Equal size → both destroyed.
+Bigger one survives and blocks further collisions.
+Stack finally contains all surviving asteroids in order.
 ```
