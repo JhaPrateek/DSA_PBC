@@ -67,36 +67,72 @@ class stack {
 ```java
 // Queue implementation
 
-class MyQueue {
-    QueueNode front, rear; // Pointers to the front and rear of the queue
+class Queue {
 
-    // Function to push (enqueue) an element into the queue
-    void push(int a) {
-        QueueNode qn = new QueueNode(a); // Create a new node with the given value
+    // Node of linked list
+    static class Node {
+        int data;
+        Node next;
 
-        if (front == null && rear == null) { // If the queue is empty
-            front = qn; // Both front and rear point to the new node
-            rear = qn;
-        } else {
-            rear.next = qn; // Link the current rear to the new node
-            rear = qn; // Move the rear pointer to the new node
+        Node(int data) {
+            this.data = data;
+            this.next = null;
         }
     }
 
-    // Function to pop (dequeue) the front element from the queue
-    int pop() {
-        if (front == null || rear == null) { // If the queue is empty
-            return -1; // Return -1 to indicate an empty queue
-        } else if (front == rear) { // If only one element is present
-            QueueNode q = front; // Store the current front node
-            front = null; // Set front and rear to null (empty queue)
-            rear = null;
-            return q.data; // Return the removed element's data
-        } else {
-            int val = front.data; // Store the front element's value
-            front = front.next; // Move the front pointer to the next node
-            return val; // Return the removed element's data
+    private Node front; // points to first element
+    private Node rear;  // points to last element
+
+    // Constructor
+    public Queue() {
+        front = null;
+        rear = null;
+    }
+
+    // Enqueue: Add element at rear
+    public void enqueue(int data) {
+        Node newNode = new Node(data);
+
+        // If queue is empty
+        if (rear == null) {
+            front = rear = newNode;
+            return;
         }
+
+        rear.next = newNode;
+        rear = newNode;
+    }
+
+    // Dequeue: Remove element from front
+    public int dequeue() {
+        if (front == null) {
+            System.out.println("Queue is empty");
+            return -1;
+        }
+
+        int removed = front.data;
+        front = front.next;
+
+        // If queue becomes empty
+        if (front == null) {
+            rear = null;
+        }
+
+        return removed;
+    }
+
+    // Peek: Get front element
+    public int peek() {
+        if (front == null) {
+            System.out.println("Queue is empty");
+            return -1;
+        }
+        return front.data;
+    }
+
+    // Check if queue is empty
+    public boolean isEmpty() {
+        return front == null;
     }
 }
 
