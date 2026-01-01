@@ -38,6 +38,7 @@ class stack {
     int topData = top.data; // Store the top element's data
     stackNode temp = top; // Temporary reference to top
     top = top.next; // Move top to the next node
+    size--;
     return topData; // Return popped value
   }
 
