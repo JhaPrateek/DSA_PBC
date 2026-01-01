@@ -15,7 +15,7 @@ Collisions are resolved one at a time, from left to right. If an asteroid surviv
 
 Return the state of the asteroids after all collisions as an array in the same order.
 
-
+```
 Examples:
 Input: asteroids = [1, 2, 3, -4, -2]
 Output: [-4, -2]
@@ -37,7 +37,7 @@ Asteroid 8 and -8 collide → both explode.
 Asteroid -3 moves left → collides with 5 (right-moving) → 5 > 3 → -3 explodes, 5 survives.
 Asteroid 12 moves right → no collision with 5 because it is behind → 12 survives.
 Final state: [5, 12]
-
+```
 
 ```java
 class Solution {
