@@ -65,34 +65,63 @@ Space Complexity: O(N) The space required to store the answer is O(N).
 
 ```java
 class Solution {
-    public int[] nextGreaterElements(int[] arr) {
-        int n = arr.length;
-        if (n == 0) return new int[0];
+    public int[] nextGreaterElements(int[] nums) {
 
-        int[] ans = new int[n];
-        Deque<Integer> st = new ArrayDeque<>(); // store indices, not values
+        int n = nums.length;
 
-        // traverse two passes (simulated by index i from 2*n-1 down to 0)
+        // ans[i] will store the next greater element for nums[i]
+        int ans[] = new int[n];
+
+        // Stack to store potential "next greater" elements
+        // We store values (not indices) because we only need the next greater value
+        Stack<Integer> st = new Stack<>();
+
+        /*
+            We traverse from (2*n - 1) to 0 to simulate a circular array.
+
+            Why 2*n?
+            - Because array is circular
+            - Second pass allows elements at the beginning to find
+              next greater elements at the end
+        */
         for (int i = 2 * n - 1; i >= 0; i--) {
-            int idx = i % n;
 
-            // pop smaller or equal elements (we want strictly greater)
-            while (!st.isEmpty() && arr[st.peek()] <= arr[idx]) {
+            /*
+                Remove all elements from stack that are
+                smaller than or equal to current element.
+
+                Why?
+                - They can NEVER be the next greater element
+                - Because current element blocks them
+            */
+            while (!st.isEmpty() && st.peek() <= nums[i % n]) {
                 st.pop();
             }
 
-            // only fill answers on the first pass (i < n)
+            /*
+                We fill answers ONLY during the first pass (i < n)
+
+                If stack is not empty:
+                - Top of stack is the next greater element
+                Else:
+                - No greater element exists → -1
+            */
             if (i < n) {
-                ans[idx] = st.isEmpty() ? -1 : arr[st.peek()];
+                ans[i] = !st.isEmpty() ? st.peek() : -1;
             }
 
-            // push current index as a candidate for elements to the left
-            st.push(idx);
+            /*
+                Push current element into stack
+                It may act as the next greater element for
+                elements on the left
+            */
+            st.push(nums[i % n]);
         }
 
         return ans;
     }
 }
+
 Time Complexity:The time complexity is O(n) because each element is pushed and popped from the stack at most once, and the outer loop iterates 2*n times.
 Space Complexity:The space complexity is O(n) because the stack can store up to n indices and the result array 'ans' also takes O(n) space.    
 ```
