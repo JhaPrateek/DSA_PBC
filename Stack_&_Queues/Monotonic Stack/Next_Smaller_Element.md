@@ -1,3 +1,5 @@
+## Next smaller element
+
 ```java
 public int[] NSE(int nums[], int n) {
     int arr[] = new int[n];       // This will store index of Next Smaller Element for each position

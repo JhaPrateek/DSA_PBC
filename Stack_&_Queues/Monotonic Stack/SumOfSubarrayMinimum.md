@@ -1,5 +1,5 @@
 ### Given an array of integers arr of size n, calculate the sum of the minimum value in each (contiguous) subarray of arr. Since the result may be large, return the answer modulo 109 +7.
-
+```
 Examples:
 Input: arr = [3, 1, 2, 5]
 
@@ -12,7 +12,7 @@ Input: arr = [2, 3, 1]
 Output: 10
 
 Explanation: The minimum of subarrays: [2], [3], [1], [2,3], [3,1], [2,3,1] are 2, 3, 1, 2, 1, 1 respectively and their sum is 10.
-
+```
 ```java
 class Solution {
     public int sumSubarrayMins(int[] arr) {

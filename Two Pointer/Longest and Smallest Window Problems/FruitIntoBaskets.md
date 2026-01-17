@@ -8,7 +8,7 @@
 
 Return the maximum number of fruits that can be picked.
 
-
+```
 Examples:
 Input : fruits = [1, 2, 1]
 Output : 3
@@ -24,7 +24,7 @@ Explanation : we will start from second tree.
 The first basket contains fruits from second , fourth and fifth.
 The second basket will contain fruit from third tree.
 Hence we collected total of 4 fruits.
-
+```
 ```java
 class Solution {
     public int totalFruits(int[] fruits) {

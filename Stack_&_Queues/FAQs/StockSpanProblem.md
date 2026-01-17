@@ -1,6 +1,6 @@
 ### Given an array arr of size n, where each element arr[i] represents the stock price on day i. Calculate the span of stock prices for each day. The span Si for a specific day i is defined as the maximum number of consecutive previous days (including the current day) for which the stock price was less than or equal to the price on day i.
 
-
+```
 Examples:
 Input: n = 7, arr = [120, 100, 60, 80, 90, 110, 115]
 
@@ -25,7 +25,7 @@ Traversing the given input span:
 115 is greater than or equal to all previous elements and smaller than 120 so the span is 6.
 
 Hence the output will be 1 1 1 2 3 5 6.
-
+```
 ```java
 class Solution {
     public int[] stockSpan(int[] arr, int n) {
