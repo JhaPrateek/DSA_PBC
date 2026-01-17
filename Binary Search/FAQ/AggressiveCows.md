@@ -1,5 +1,5 @@
 ### Given an array nums of size n, which denotes the positions of stalls, and an integer k, which denotes the number of aggressive cows, assign stalls to k cows such that the minimum distance between any two cows is the maximum possible. Find the maximum possible minimum distance.
-
+```
 Example 1
 Input: n = 6, k = 4, nums = [0, 3, 4, 7, 10, 9]
 Output: 3
@@ -12,7 +12,7 @@ Input : n = 5, k = 2, nums = [4, 2, 1, 3, 6]
 Output: 5
 Explanation: The maximum possible minimum distance between any two cows will be 5 when 2 cows are placed at positions [1, 6]. 
 ```
-```
+```java
 class Solution {
 
     public int aggressiveCows(int[] stalls, int k) {
